@@ -145,7 +145,7 @@ It is not considered a collection of independent autonomous agents. Retrieval, e
 **Model:**
 
 ```text
-llama-3.3-70b-versatile
+openai/gpt-oss-120b
 ```
 
 **Responsibilities:**
@@ -1275,7 +1275,7 @@ The application expects:
 # =========================
 
 GROQ_API_KEY=gsk_your_groq_api_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
+GROQ_MODEL=openai/gpt-oss-120b
 
 # =========================
 # Google Gemini

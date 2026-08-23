@@ -20,7 +20,7 @@ class Settings(BaseSettings):
 
     # Groq
     groq_api_key: str = Field(default="", alias="GROQ_API_KEY")
-    groq_model: str = Field(default="llama-3.3-70b-versatile", alias="GROQ_MODEL")
+    groq_model: str = Field(default="openai/gpt-oss-120b", alias="GROQ_MODEL")
     groq_max_output_tokens: int = Field(default=2048, alias="GROQ_MAX_OUTPUT_TOKENS")
     groq_query_max_output_tokens: int = Field(default=256, alias="GROQ_QUERY_MAX_OUTPUT_TOKENS")
     groq_synthesis_max_output_tokens: int = Field(

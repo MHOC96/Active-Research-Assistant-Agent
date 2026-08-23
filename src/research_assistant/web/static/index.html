@@ -3,23 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Active Research Assistant — Find relevant papers, build your local index, and get citation-ready references in seconds." />
     <title>Active Research Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
+    <!-- Animated background -->
+    <div class="bg-orbs" aria-hidden="true">
+      <div class="bg-orb bg-orb--1"></div>
+      <div class="bg-orb bg-orb--2"></div>
+      <div class="bg-orb bg-orb--3"></div>
+    </div>
+    <div class="bg-noise" aria-hidden="true"></div>
+
     <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
     <div class="page">
       <header class="header">
         <div class="header-copy">
-          <p class="eyebrow">Local research assistant</p>
+          <p class="eyebrow">Research Assistant</p>
           <h1>Active Research Assistant</h1>
           <p class="subtitle">
             Find relevant papers, build your local index, and get citation-ready references in seconds.
           </p>
         </div>
         <div class="header-actions">
-          <button id="help-btn" class="ghost small" type="button" title="How it works">How it works</button>
+          <button id="help-btn" class="ghost small" type="button" title="How it works">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            How it works
+          </button>
           <div class="status-pill" id="health-status">
             <span class="status-dot"></span>
             <span id="health-label">Checking services...</span>
@@ -65,7 +79,7 @@
           <div id="segment-citations" class="segment-citations hidden" aria-live="polite"></div>
 
           <div class="examples">
-            <span class="examples-label">Try an example:</span>
+            <span class="examples-label">Try an example</span>
             <div class="example-chips" id="example-chips"></div>
           </div>
 
@@ -99,10 +113,22 @@
           <div class="result-header">
             <h2>Result</h2>
             <div class="result-toolbar hidden" id="result-toolbar">
-              <button id="rerun-btn" class="ghost small hidden" type="button" title="Run pipeline again">Re-run</button>
-              <button id="copy-btn" class="ghost small" type="button">Copy</button>
-              <button id="download-btn" class="ghost small" type="button">Download</button>
-              <button id="bundle-btn" class="ghost small" type="button" title="Download query, references, manifest, and cached PDFs">Bundle</button>
+              <button id="rerun-btn" class="ghost small hidden" type="button" title="Run pipeline again">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                Re-run
+              </button>
+              <button id="copy-btn" class="ghost small" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy
+              </button>
+              <button id="download-btn" class="ghost small" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download
+              </button>
+              <button id="bundle-btn" class="ghost small" type="button" title="Download query, references, manifest, and cached PDFs">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                Bundle
+              </button>
             </div>
           </div>
 
@@ -124,7 +150,17 @@
           </div>
 
           <div id="empty-state" class="empty-state">
-            <div class="empty-icon" aria-hidden="true">&#128218;</div>
+            <div class="empty-icon" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="4" width="30" height="40" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+                <rect x="14" y="10" width="30" height="40" rx="4" fill="rgba(99,102,241,0.08)" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+                <rect x="20" y="16" width="30" height="40" rx="4" fill="rgba(56,189,248,0.06)" stroke="currentColor" stroke-width="1.5" opacity="0.8"/>
+                <line x1="26" y1="26" x2="44" y2="26" stroke="currentColor" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+                <line x1="26" y1="32" x2="40" y2="32" stroke="currentColor" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+                <line x1="26" y1="38" x2="42" y2="38" stroke="currentColor" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+                <circle cx="35" cy="48" r="3" fill="rgba(99,102,241,0.3)" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </svg>
+            </div>
             <h3>Ready when you are</h3>
             <p>Your formatted references will appear here.</p>
           </div>
@@ -137,7 +173,10 @@
 
       <aside class="panel history-panel">
         <div class="history-header">
-          <h2>Recent queries</h2>
+          <h2>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px;opacity:0.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Recent queries
+          </h2>
           <div class="history-header-actions">
             <button id="remove-selected-btn" class="ghost small danger" type="button" disabled>Remove selected</button>
             <button id="clear-history-btn" class="ghost small" type="button">Clear all</button>
@@ -151,6 +190,7 @@
           <li class="history-empty">No recent queries yet.</li>
         </ul>
       </aside>
+
     </div>
 
     <script src="/static/app.js"></script>

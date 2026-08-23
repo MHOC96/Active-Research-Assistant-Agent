@@ -128,10 +128,19 @@ function updateCharCount() {
 }
 
 function showToast(message) {
-  toast.textContent = message;
+  toast.innerHTML = `<span>${escapeHtml(message)}</span><div style="position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));border-radius:0 0 var(--radius-md) var(--radius-md);animation:toastProgress 2.4s linear forwards;width:100%"></div>`;
+  toast.style.position = 'fixed';
   toast.classList.remove("hidden");
   clearTimeout(showToast._timer);
   showToast._timer = setTimeout(() => toast.classList.add("hidden"), 2400);
+}
+
+/* Inject toast progress keyframes once */
+if (!document.getElementById('toast-keyframes')) {
+  const style = document.createElement('style');
+  style.id = 'toast-keyframes';
+  style.textContent = '@keyframes toastProgress { from { width: 100%; } to { width: 0%; } }';
+  document.head.appendChild(style);
 }
 
 async function loadCitationStyles() {
@@ -436,9 +445,15 @@ function startLoadingUi() {
   loadingTimer.textContent = "0s";
   setProgressStep(PROGRESS_STEPS[0]);
 
+  const loadingTitle = document.querySelector('.loading-title');
+  const baseText = 'Working on your request';
+  let dotCount = 0;
+
   loadingInterval = setInterval(() => {
     seconds += 1;
     loadingTimer.textContent = `${seconds}s`;
+    dotCount = (dotCount % 3) + 1;
+    if (loadingTitle) loadingTitle.textContent = baseText + '.'.repeat(dotCount);
   }, 1000);
 
   progressInterval = setInterval(() => {
